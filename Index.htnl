@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Judol</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg, #5b21b6, #7c3aed, #a855f7);
+      color:white;
+    }
+
+    .container{
+      text-align:center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding:40px;
+      border-radius:25px;
+      width:90%;
+      max-width:500px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      position:relative;
+    }
+
+    h1{
+      font-size:38px;
+      margin-bottom:15px;
+    }
+
+    p{
+      font-size:18px;
+      margin-bottom:25px;
+      line-height:1.6;
+    }
+
+    .emoji{
+      font-size:70px;
+      margin-bottom:15px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float{
+      0%{ transform: translateY(0px);}
+      50%{ transform: translateY(-10px);}
+      100%{ transform: translateY(0px);}
+    }
+
+    .buttons{
+      position:relative;
+      height:120px;
+    }
+
+    button{
+      padding:14px 28px;
+      border:none;
+      border-radius:15px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.2s;
+      font-weight:bold;
+    }
+
+    #yesBtn{
+      background:#22c55e;
+      color:white;
+      margin-right:15px;
+    }
+
+    #yesBtn:hover{
+      transform:scale(1.08);
+    }
+
+    #noBtn{
+      background:#ef4444;
+      color:white;
+      position:absolute;
+    }
+
+    .message{
+      margin-top:25px;
+      font-size:22px;
+      font-weight:bold;
+      color:#fff;
+      display:none;
+      animation: fade 0.6s ease;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .sticker{
+      position:absolute;
+      font-size:35px;
+      opacity:0.8;
+      animation: spin 6s linear infinite;
+    }
+
+    .s1{
+      top:15px;
+      left:20px;
+    }
+
+    .s2{
+      bottom:20px;
+      right:25px;
+    }
+
+    .s3{
+      top:20px;
+      right:20px;
+    }
+
+    @keyframes spin{
+      from{
+        transform:rotate(0deg);
+      }
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="sticker s1">💜</div>
+    <div class="sticker s2">🚫</div>
+    <div class="sticker s3">✨</div>
+
+    <div class="emoji">🎮❌</div>
+
+    <h1>STOP JUDOL</h1>
+
+    <p>
+      Judi online hanya memberi harapan palsu dan merusak masa depan.
+      Yuk pilih hidup yang lebih sehat, tenang, dan bahagia 💜
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">IYA, SAYA MAU BERHENTI</button>
+      <button id="noBtn">TIDAK</button>
+    </div>
+
+    <div class="message" id="message">
+      🌟 Keren! Masa depanmu jauh lebih berharga daripada judi online 💜
+    </div>
+
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    noBtn.addEventListener("mouseover", () => {
+
+      const container = document.querySelector(".container");
+
+      const maxX = container.clientWidth - noBtn.offsetWidth - 20;
+      const maxY = container.clientHeight - noBtn.offsetHeight - 20;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+
+      document.body.style.background =
+        "linear-gradient(135deg, #6d28d9, #9333ea, #c084fc)";
+
+      yesBtn.innerHTML = "TERIMA KASIH 💜";
+    });
+  </script>
+
+</body>
+</html>
